@@ -1,0 +1,27 @@
+<%-include('header.ejs')%>
+
+
+<%=view.idx%>
+<%=view.name%>
+<%=view.phone%>
+<%=view.email%>
+<%=view.memo%>¡
+
+
+
+<form action="/contactForm" method="post" >
+    <ul>
+        <li> 문의하기 </li>
+        <input type="hidden" name="idx" value="<%=view.idx%>">
+        <li> 이름 : <input type="text" name="name" value="<%=view.name%>"  required ></li>
+        <li> 연락처 : <input type="text" name="phone" value="<%=view.phone%>" required></li>
+        <li> 이메일 : <input type="text" name="email" value="<%=view.email%>" required ></li>
+        <li>내용 <br>
+            <textarea name="memo" cols="50" rows="10"><%=view.memo%></textarea></li>
+        <button>문의하기</button>
+    </ul>
+</form>
+
+
+
+<%-include('footer.ejs')%>

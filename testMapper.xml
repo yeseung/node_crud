@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testMapper">
+    <select id="list"> SELECT * from contact order by idx desc </select>
+
+    <insert id="create">
+        insert into contact (
+              name
+            , phone
+            , email
+            , memo
+            , regdate
+        ) values(
+              #{name}
+            , #{phone}
+            , #{email}
+            , #{memo}
+            , now()
+        )
+    </insert>
+
+    <delete id="del"> DELETE from contact where idx = #{idx} </delete>
+
+
+    <select id="findByIdx"> SELECT * from contact WHERE idx = #{idx} </select>
+
+    <update id="update">
+        UPDATE `contact`
+            set
+                regdate = NOW(),
+                name = #{name},
+                phone = #{phone},
+                email = #{email},
+                memo = #{memo}
+        WHERE idx = #{idx}
+    </update>
+
+    <select id="findByUserIdAndPw"> SELECT * from member where user_id = #{user_id} and pw = #{pw} </select>
+</mapper>
